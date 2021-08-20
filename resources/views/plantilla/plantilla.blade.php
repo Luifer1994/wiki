@@ -4,30 +4,55 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("assets/images/favicon.png") }}">
+    <link href="{{ asset("assets/vendor/datatables/css/jquery.dataTables.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/css/toastr.min.css') }}">
+    @livewireStyles
 
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <title>Blank Page | AdminKit Demo</title>
-
-    <link href="{{ asset("assets/css/app.css") }}" rel="stylesheet">
 </head>
 
 <body>
-    <div class="wrapper">
-        @include('plantilla.nav')
-        <div class="main">
-            @include('plantilla.sidebar')
-            @yield('content')
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
         </div>
     </div>
 
+    <div id="main-wrapper">
+        @include('plantilla.navheader')
 
-    <script src="{{ asset("assets/js/app.js") }}"></script>
+        @include('plantilla.sidebar')
 
+        <div class="content-body">
+
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+
+        </div>
+
+        @include('plantilla.footer')
+
+
+
+    </div>
+    <!-- Required vendors -->
+    <script src="{{ asset("assets/vendor/jquery/jquery.min.js") }}"></script>
+    <script src="{{ asset("assets/vendor/global/global.min.js") }}"></script>
+    <script src="{{ asset("assets/js/quixnav-init.js") }}"></script>
+    <script src="{{ asset("assets/js/custom.min.js") }}"></script>
+
+    <script src="{{ asset("assets/js/dashboard/dashboard-1.js") }}}"></script>
+    <script src="{{ asset('assets/vendor/toastr/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins-init/toastr-init.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>
