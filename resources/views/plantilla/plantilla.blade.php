@@ -10,10 +10,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("assets/images/favicon.png") }}">
     <link href="{{ asset("assets/vendor/datatables/css/jquery.dataTables.min.css") }}" rel="stylesheet">
     <link href="{{ asset("assets/css/style.css") }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset("assets/vendor/toastr/css/toastr.min.css") }}">
     @livewireStyles
-
-
 </head>
 
 <body>
@@ -25,7 +23,7 @@
         </div>
     </div>
 
-    <div id="main-wrapper">
+    <div id="main-wrapper" style="background-color: rgb(235, 235, 235)">
         @include('plantilla.navheader')
 
         @include('plantilla.sidebar')
@@ -50,9 +48,19 @@
     <script src="{{ asset("assets/js/custom.min.js") }}"></script>
 
     <script src="{{ asset("assets/js/dashboard/dashboard-1.js") }}}"></script>
-    <script src="{{ asset('assets/vendor/toastr/js/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins-init/toastr-init.js') }}"></script>
+    <script src="{{ asset("assets/vendor/toastr/js/toastr.min.js") }}"></script>
+    <script src="{{ asset("assets/js/plugins-init/toastr-init.js") }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     @livewireScripts
+    <script type="text/javascript">
+        window.livewire.on('hide', () => {
+            $('.modal').modal('hide');
+        });
+
+    </script>
+
 </body>
 
 </html>

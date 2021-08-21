@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 Auth::routes();
-
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/generos', [GeneroController::class, 'index'])->name('generos');
+Route::middleware(['auth:sanctum', 'verified'])->get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/generos', [GeneroController::class, 'index'])->name('generos');
+//RUTA QUE DESTRUYE LA SESION
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
