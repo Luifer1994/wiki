@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Genero as ModelsGenero;
+use App\Models\Categoria;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Genero extends Component
+class Categorias extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $nombre, $id_genero;
+    public $nombre, $id_categoria;
     public $searh = '';
     protected $rules = [
         'nombre' => 'required'
@@ -22,10 +23,10 @@ class Genero extends Component
 
     public function render()
     {
-        $generos = ModelsGenero::where('nombre', 'LIKE', "%{$this->searh}%")
+        $categorias = Categoria::where('nombre', 'LIKE', "%{$this->searh}%")
         ->orWhere('id', 'LIKE', "%{$this->searh}%")
-            ->orderBy('id')->paginate(10);
-        return view('livewire.genero.genero-component', compact('generos'));
+            ->orderBy('id', 'Desc')->paginate(10);
+        return view('livewire.categorias.categorias', compact('categorias'));
     }
 
     public function store(){
@@ -34,8 +35,10 @@ class Genero extends Component
             'nombre' => 'required'
         ]);
 
-        ModelsGenero::create([
-            'nombre' => ucwords($this->nombre)
+        Categoria::create([
+            'nombre' => ucwords($this->nombre),
+            'user_creacion' => Auth::user()->id,
+            "user_actualizacion" => Auth::user()->id
         ]);
         $this->nombre = null;
           //DESPUES DE CREADO MANDAMOS UN MENSAJE DE CONFIRMACION
@@ -44,13 +47,12 @@ class Genero extends Component
           $this->emit('hide'); // Close model to using to jquery
     }
 
-     public function edit($id){
+    public function edit($id){
 
-        $genero =  ModelsGenero::find($id);
-        $this->id_genero = $genero->id;
-        $this->nombre  = $genero->nombre;
+        $categoria =  Categoria::find($id);
+        $this->id_categoria = $categoria->id;
+        $this->nombre  = $categoria->nombre;
     }
-
 
     public function update(){
 
@@ -58,10 +60,11 @@ class Genero extends Component
             'nombre' => 'required'
         ]);
 
-        $genero = ModelsGenero::find($this->id_genero);
+        $categoria = Categoria::find($this->id_categoria);
 
-        $genero->update([
+        $categoria->update([
             'nombre' => ucwords($this->nombre),
+            "user_actualizacion" => Auth::user()->id
         ]);
         $this->nombre = null;
           //DESPUES DE CREADO MANDAMOS UN MENSAJE DE CONFIRMACION
@@ -69,10 +72,14 @@ class Genero extends Component
 
         $this->emit('hide'); // Close model to using to jquery
     }
-    public function delete(ModelsGenero $genero){
+    public function delete(Categoria $categoria){
 
-        $genero->delete();
+        $categoria->delete();
         //DESPUES DE CREADO MANDAMOS UN MENSAJE DE CONFIRMACION
         session()->flash('mensaje', 'Registro elimiado con exito');
+    }
+    public function cancel()
+    {
+        $this->nombre = null;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -23,5 +24,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::middleware(['auth:sanctum', 'verified'])->get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth:sanctum', 'verified'])->get('/generos', [GeneroController::class, 'index'])->name('generos');
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorias', [CategoriasController::class, 'index'])->name('categorias');
 //RUTA QUE DESTRUYE LA SESION
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');

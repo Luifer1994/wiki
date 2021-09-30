@@ -1,16 +1,16 @@
 <div>
-    @include('livewire.genero.create')
+    @include('livewire.categorias.create')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="m-4 d-flex bd-highlight">
                     <div class="flex-grow-1 bd-highlight">
-                        <h4 class=" card-title">Generos</h4>
+                        <h4 class=" card-title">Categorias</h4>
                     </div>
 
                     <div class="bd-highlight">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Registrar Genero
+                            Registrar Categoria
                         </button>
                     </div>
 
@@ -29,18 +29,18 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-dark">
-                                    @if ($generos->count() > 0)
-                                    @foreach ($generos as $key => $genero)
+                                    @if ($categorias->count() > 0)
+                                    @foreach ($categorias as $key => $categoria)
                                     <tr>
-                                        <td>{{$genero->id }}</td>
-                                        <td>{{ $genero->nombre }}</td>
-                                        <td>{{ Str::ucfirst($genero->created_at->isoFormat('LLLL')) }}</td>
+                                        <td>{{$categoria->id }}</td>
+                                        <td>{{ $categoria->nombre }}</td>
+                                        <td>{{ Str::ucfirst($categoria->created_at->isoFormat('LLLL')) }}</td>
                                         <td>
-                                            <button wire:click='edit({{ $genero->id }})' class="btn btn-primary bt-sm" data-toggle="modal" data-target="#update">
+                                            <button wire:click='edit({{ $categoria->id }})' class="btn btn-primary bt-sm" data-toggle="modal" data-target="#update">
                                                 <i class="icon-pencil"></i>
                                             </button>
-                                            @include('livewire.genero.update')
-                                            <button class="btn btn-danger bt-sm" onclick="Delete(this, {{ $genero->id }})">
+                                            @include('livewire.categorias.update')
+                                            <button class="btn btn-danger bt-sm" onclick="Delete(this, {{ $categoria->id }})">
 
                                                 <i class="icon-trash"></i></button>
                                         </td>
@@ -58,7 +58,7 @@
                         </div>
                         <nav>
                             <ul class="pagination pagination-gutter">
-                                {{ $generos->links() }}
+                                {{ $categorias->links() }}
                             </ul>
                         </nav>
                     </div>
