@@ -3,70 +3,75 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="m-4 d-flex bd-highlight">
-                    <div class="flex-grow-1 bd-highlight">
-                        <h4 class=" card-title">Categorias</h4>
-                    </div>
-
-                    <div class="bd-highlight">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Registrar Categoria
-                        </button>
-                    </div>
-
-                </div>
                 <div class="card-body">
-                    <div class="mx-4">
-                        <input wire:model="searh" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
-                        <div class="table-responsive">
-                            <table class="table table-striped display" style="min-width: 845px">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Fecha creación</th>
-                                        <th>Accion</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-dark">
-                                    @if ($categorias->count() > 0)
-                                    @foreach ($categorias as $key => $categoria)
-                                    <tr>
-                                        <td>{{$categoria->id }}</td>
-                                        <td>{{ $categoria->nombre }}</td>
-                                        <td>{{ Str::ucfirst($categoria->created_at->isoFormat('LLLL')) }}</td>
-                                        <td>
-                                            <button wire:click='edit({{ $categoria->id }})' class="btn btn-primary bt-sm" data-toggle="modal" data-target="#update">
-                                                <i class="icon-pencil"></i>
-                                            </button>
-                                            @include('livewire.categorias.update')
-                                            <button class="btn btn-danger bt-sm" onclick="Delete(this, {{ $categoria->id }})">
-
-                                                <i class="icon-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-
-                                    @else
-                                    <div class="text-center">
-                                        <p class="text-danger">No hay resultados</p>
-                                    </div>
-                                    @endif
-
-                                </tbody>
-                            </table>
+                    <h5 class="card-tittle">Categorías</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-8 col-lg-10 col-md-10">
+                            <input wire:model="searh" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
                         </div>
-                        <nav>
-                            <ul class="pagination pagination-gutter">
-                                {{ $categorias->links() }}
-                            </ul>
-                        </nav>
+                        <div class="col col-sm-1">
+                            <button type="button" class="btn btn-google d-lg-none" data-toggle="modal" data-target="#exampleModal">
+                                <i class="fa fa-plus color-primary"></i>
+                            </button>
+                        </div>
+                        <div class="d-none d-lg-block">
+                            <button type="button" class="btn btn-google" data-toggle="modal" data-target="#exampleModal">
+                                <span class="btn-icon-left" style="color: rgb(24, 83, 245)">
+                                    <i class="fa fa-plus color-google"></i>
+                                </span>agregar
+                            </button>
+                        </div>
                     </div>
+
+                    <div class="table-responsive">
+                        <hr>
+                        <table class="table table-striped display" style="min-width: 845px">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha creación</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-dark">
+                                @if ($categorias->count() > 0)
+                                @foreach ($categorias as $key => $categoria)
+                                <tr>
+                                    <td>{{$categoria->id }}</td>
+                                    <td>{{ $categoria->nombre }}</td>
+                                    <td>{{ Str::ucfirst($categoria->created_at->isoFormat('LLLL')) }}</td>
+                                    <td>
+                                        <button wire:click='edit({{ $categoria->id }})' class="btn btn-primary btn-sm" data-toggle="modal" data-target="#update">
+                                            <i class="icon-pencil"></i>
+                                        </button>
+                                        @include('livewire.categorias.update')
+                                        <button class="btn btn-danger btn-sm" onclick="Delete(this, {{ $categoria->id }})">
+                                            <i class="icon-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                @else
+                                <div class="text-center">
+                                    <p class="text-danger">No hay resultados</p>
+                                </div>
+                                @endif
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav>
+                        <ul class="pagination pagination-gutter">
+                            {{ $categorias->links() }}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         function Delete(elmnt, id) {
             Swal.fire({
@@ -88,15 +93,10 @@
                 }
             })
         }
-
     </script>
-
-
     @if(Session::has('mensaje'))
     <script>
         Command: toastr["success"]("{{ session('mensaje')}}")
-
-
         toastr.options = {
             "closeButton": false
             , "debug": false
@@ -122,6 +122,7 @@
 
             $('#register').modal('hide');
         });
-
     </script>
 </div>
+
+
