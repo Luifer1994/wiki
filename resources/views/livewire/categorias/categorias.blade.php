@@ -3,21 +3,20 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="m-4 d-flex bd-highlight">
-                    <div class="flex-grow-1 bd-highlight">
-                        <h4 class=" card-title">Categorias</h4>
-                    </div>
-
-                    <div class="bd-highlight">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Registrar Categoria
-                        </button>
-                    </div>
-
-                </div>
                 <div class="card-body">
-                    <div class="mx-4">
-                        <input wire:model="searh" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                    <h4 class=" card-title">Categorias</h4>
+                    <div class="">
+                            <div class="row">
+                              <div class="col col-lg-9 col-xl-9 justify-content-start">
+                                <input wire:model="searh" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+
+                              </div>
+                              <div class="col-sm d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Registrar Categoria
+                                </button>
+                              </div>
+                            </div>
                         <div class="table-responsive">
                             <table class="table table-striped display" style="min-width: 845px">
                                 <thead>
