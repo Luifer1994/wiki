@@ -75,4 +75,9 @@ class Genero extends Component
         //DESPUES DE CREADO MANDAMOS UN MENSAJE DE CONFIRMACION
         session()->flash('mensaje', 'Registro elimiado con exito');
     }
+
+    public function cancel()
+    {
+        $this->nombre = null;
+    }
 }

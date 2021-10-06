@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" wire:model="nombre">
+                        <input type="text" class="form-control" wire:click="cancel()" id="exampleFormControlInput1" placeholder="Nombre" wire:model="nombre">
                         @error('nombre') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>

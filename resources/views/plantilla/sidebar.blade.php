@@ -14,6 +14,12 @@
                      <span class="nav-text"> Categorias</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('subCategorias') }}" aria-expanded="false">
+                     <i class="icon icon-globe-2"></i>
+                     <span class="nav-text"> Sub categorías</span>
+                </a>
+            </li>
          </ul>
      </div>
  </div>

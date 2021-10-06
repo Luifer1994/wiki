@@ -1,10 +1,10 @@
 <div>
-    @include('livewire.genero.create')
+    @include('livewire.subCategoria.create')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-tittle">Generos</h5>
+                    <h5 class="card-tittle">Sub Categorías</h5>
                     <br>
                     <div class="row">
                         <div class="col-8 col-lg-10">
@@ -17,33 +17,42 @@
                         </div>
                         <div class="d-none d-lg-block">
                             <button type="button" class="btn btn-google" data-toggle="modal" data-target="#exampleModal">
-                                agregar
+                                Agregar
                             </button>
                         </div>
                     </div>
+                    {{-- <select name="" id="" wire:model="searh">
+                        <option value="">Select</option>
+                        @foreach ($categorias as $item)
+                            <option value="{{$item->nombre}}">{{$item->nombre}}</option>
+                        @endforeach
+                    </select> --}}
                     <div class="table-responsive">
+                        <hr>
                         <table class="table table-striped display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Categoría</th>
                                     <th>Fecha creación</th>
                                     <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody class="text-dark">
-                                @if ($generos->count() > 0)
-                                @foreach ($generos as $key => $genero)
+                                @if ($subCategorias->count() > 0)
+                                @foreach ($subCategorias as $key => $SubCategoria)
                                 <tr>
-                                    <td>{{$genero->id }}</td>
-                                    <td>{{ $genero->nombre }}</td>
-                                    <td>{{ Str::ucfirst($genero->created_at->isoFormat('LLLL')) }}</td>
+                                    <td>{{$SubCategoria->id }}</td>
+                                    <td>{{ $SubCategoria->nombre }}</td>
+                                    <td>{{ $SubCategoria->nombreCategoria }}</td>
+                                    <td>{{ Str::ucfirst($SubCategoria->created_at->isoFormat('LLLL')) }}</td>
                                     <td>
-                                        <button wire:click='edit({{ $genero->id }})' class="btn btn-primary btn-sm" data-toggle="modal" data-target="#update">
+                                        <button wire:click='edit({{ $SubCategoria->id }})' class="btn btn-primary btn-sm" data-toggle="modal" data-target="#update">
                                             <i class="icon-pencil"></i>
                                         </button>
-                                        @include('livewire.genero.update')
-                                        <button class="btn btn-danger btn-sm" onclick="Delete(this, {{ $genero->id }})">
+                                        @include('livewire.subCategoria.update')
+                                        <button class="btn btn-danger btn-sm" onclick="Delete(this, {{ $SubCategoria->id }})">
                                             <i class="icon-trash"></i>
                                         </button>
                                     </td>
@@ -55,12 +64,13 @@
                                     <p class="text-danger">No hay resultados</p>
                                 </div>
                                 @endif
+
                             </tbody>
                         </table>
                     </div>
                     <nav>
                         <ul class="pagination pagination-gutter">
-                            {{ $generos->links() }}
+                            {{ $subCategorias->links() }}
                         </ul>
                     </nav>
                 </div>
@@ -92,8 +102,6 @@
     @if(Session::has('mensaje'))
     <script>
         Command: toastr["success"]("{{ session('mensaje')}}")
-
-
         toastr.options = {
             "closeButton": false
             , "debug": false
@@ -111,15 +119,14 @@
             , "showMethod": "fadeIn"
             , "hideMethod": "fadeOut"
         }
+
     </script>
     @endif
     <script type="text/javascript">
-        window.livewire.on('generoStore', () => {
-
+        window.livewire.on('categoriaStore', () => {
             $('#register').modal('hide');
         });
     </script>
 </div>
-
 
 

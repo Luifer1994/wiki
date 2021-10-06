@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar Categoría</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Registrar Sub Categoría</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -14,6 +14,15 @@
                         {{-- <label for="exampleFormControlInput1">Nombre</label>  --}}
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" wire:model="nombre">
                         @error('nombre') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" wire:model="id_categoria">
+                            <option value="">Selecciona</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                            @endforeach
+                        </select>
+                        @error('id_categoria') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>
             </div>

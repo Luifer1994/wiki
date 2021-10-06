@@ -11,13 +11,23 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
+                        {{-- <label for="exampleFormControlInput1">Nombre</label>  --}}
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" wire:model="nombre">
                         @error('nombre') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" wire:model="id_categoria">
+                            <option value="">Selecciona</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                            @endforeach
+                        </select>
+                        @error('id_categoria') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click="cancel()" class="btn btn-danger close-btn" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger close-btn" wire:click="cancel()" data-dismiss="modal">Cancelar</button>
                 <button type="button" wire:click="update()" class="btn btn-primary close-modal">Actualizar</button>
 
             </div>

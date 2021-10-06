@@ -7,7 +7,7 @@
                     <h5 class="card-tittle">Categorías</h5>
                     <br>
                     <div class="row">
-                        <div class="col-8 col-lg-8 col-md-8">
+                        <div class="col-8 col-lg-10">
                             <input wire:model="searh" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
                         </div>
                         <div class="col col-sm-1">
@@ -15,11 +15,9 @@
                                 <i class="fa fa-plus color-primary"></i>
                             </button>
                         </div>
-                        <div class="d-none d-lg-block d-md-block">
+                        <div class="d-none d-lg-block">
                             <button type="button" class="btn btn-google" data-toggle="modal" data-target="#exampleModal">
-                                <span class="btn-icon-left" style="color: rgb(24, 83, 245)">
-                                    <i class="fa fa-plus color-google"></i>
-                                </span>agregar
+                                agregar
                             </button>
                         </div>
                     </div>
