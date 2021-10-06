@@ -20,6 +20,12 @@
                      <span class="nav-text"> Sub categorías</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('articulos') }}" aria-expanded="false">
+                     <i class="icon icon-globe-2"></i>
+                     <span class="nav-text"> Artículos</span>
+                </a>
+            </li>
          </ul>
      </div>
  </div>
